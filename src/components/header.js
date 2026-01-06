@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
-      <Link to="/">Home</Link>
-      <Link to="/admin">Admin</Link>
+    <header className="header">
+      <nav>
+        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+        {/* Requirement: Link to Admin must exist */}
+        <Link to="/admin">Admin Panel</Link>
+      </nav>
     </header>
   );
 };
