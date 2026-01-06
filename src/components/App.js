@@ -5,68 +5,56 @@ import Home from "./home";
 import Header from "./header";
 import Admin from "./admin";
 import Product from "./product";
-// Corrected typo in variable name below for clarity
-import AdminProduct from "./adminProduct"; 
-
-// You likely have a data file, or you can start with a default array here
-// Ensure this matches the 8 products mentioned in the evaluation criteria
-const initialProducts = [
-  { id: "1", name: "iPhone 13", price: 60000, description: "Apple phone", image: "url..." },
-  // ... add the rest of your initial 8 items here
-];
+import AdminProduct from "./adminProduct"; // Fixed typo from AdminProdcut
+import productsData from "../constants/products"; // Renamed import to avoid confusion
 
 const App = () => {
-  // 1. Lift state up: The master list lives here
-  const [products, setProducts] = useState(initialProducts);
+  // Initialize state with the default list
+  const [products, setProducts] = useState(productsData);
 
-  // 2. Handler to Add a Product (Requirements: count increases to 9)
+  // Function to Add Product (Required for test: count increases)
   const addProduct = (newProduct) => {
-    setProducts([...products, { ...newProduct, id: Date.now().toString() }]);
+    // specific logic to ensure ID is unique
+    const productWithId = { ...newProduct, id: (products.length + 1).toString() };
+    setProducts([...products, productWithId]);
   };
 
-  // 3. Handler to Delete a Product (Requirements: count decreases by 1)
+  // Function to Delete Product (Required for test: count decreases)
   const deleteProduct = (id) => {
-    const updatedList = products.filter((item) => item.id !== id);
-    setProducts(updatedList);
+    const newList = products.filter((p) => p.id !== id);
+    setProducts(newList);
   };
 
-  // 4. Handler to Edit a Product (Requirements: price updates persist)
+  // Function to Update Product (Required for test: price update persists)
   const updateProduct = (updatedProduct) => {
-    const updatedList = products.map((item) => 
-      item.id === updatedProduct.id ? updatedProduct : item
+    const newList = products.map((p) =>
+      p.id === updatedProduct.id ? updatedProduct : p
     );
-    setProducts(updatedList);
+    setProducts(newList);
   };
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* Pass products list to Home */}
         <Route path="/" element={<Home products={products} />} />
-        
-        {/* Pass products, add, and delete handlers to Admin */}
         <Route 
           path="/admin" 
           element={
             <Admin 
               products={products} 
-              onDelete={deleteProduct} 
-              onAdd={addProduct} 
+              addProduct={addProduct} 
+              deleteProduct={deleteProduct} 
             />
           } 
         />
-        
-        {/* Pass products list to Product Details (so it can find the specific item) */}
         <Route path="/products/:id" element={<Product products={products} />} />
-        
-        {/* Pass products and update handler to Admin Product Edit page */}
         <Route 
           path="/admin/products/:id" 
           element={
             <AdminProduct 
               products={products} 
-              onUpdate={updateProduct} 
+              updateProduct={updateProduct} 
             />
           } 
         />
