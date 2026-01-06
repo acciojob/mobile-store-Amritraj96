@@ -1,18 +1,23 @@
-// src/components/Home.js
 import React from "react";
 import { Link } from "react-router-dom";
-import products from "../constants/products";
 
-const Home = () => {
+// Receive products as a prop
+const Home = ({ products }) => {
   return (
-    <div>
+    <div className="home-container">
       {products.map((item) => (
-        <Link key={item.id} to={`/products/${item.id}`}>
-          {item.name} <button className="btn">Buy</button>
-        </Link>
+        <div key={item.id} className="product-card">
+          <Link to={`/products/${item.id}`}>
+            <h3>{item.name}</h3>
+          </Link>
+          {/* Test requires a button inside the link or card */}
+          <Link to={`/products/${item.id}`}>
+             <button className="btn">Buy</button>
+          </Link>
+        </div>
       ))}
     </div>
   );
 };
 
-export default Home; // Ensure this export is correct
+export default Home;
