@@ -1,0 +1,85 @@
+
+.itemAdmin{
+    padding: 5px;
+    background-color: #d3d2d3;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+
+}
+
+.titleAdmin{
+    justify-items: center;
+    align-items: center;
+    max-width: 50%;
+    text-align: left;
+}
+
+.containerUser{
+
+    border: 1px solid black;
+}
+
+.boxProduct{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0;
+}
+
+.content{
+    display: flex;
+
+}
+
+.rowStyle{
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+
+.divImage{
+
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.divText{
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    min-height: 150px;;
+}
+
+.image{
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.titleStyle{
+    padding-top: 20px;
+
+}
+
+.priceStyle{
+    text-decoration: none;
+    text-align: left;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 20px;
+
+}
+
+.btnBuy{
+    text-align: right;
+}
+
+.btnContainer{
+    justify-content: center;
+}
