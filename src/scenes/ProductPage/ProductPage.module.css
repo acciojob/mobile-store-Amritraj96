@@ -1,0 +1,38 @@
+
+.container{
+    display:flex;
+    padding-top: 30px;
+    justify-content: center;
+
+
+}
+
+.img{
+    height: 265px;
+}
+
+.content{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    text-align: left;
+}
+
+.price{
+    text-align: left;
+    padding-left: 20px;
+}
+
+.description{
+    text-align: justify;
+;
+}
+
+
+
+.divBtn{
+    text-align: right;
+}
